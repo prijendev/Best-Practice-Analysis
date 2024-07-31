@@ -1,0 +1,137 @@
+{
+    "/home/devuser/pranay_temp/Elastic/connectors/connectors/sources/zoom.py": {
+        "Always try to be explicit in error handling (example using ValueError in place of general Exception)": [
+            {
+                "code": "except Exception:",
+                "status": "Violated",
+                "suggestion": "Use more specific exceptions instead of a general Exception to handle errors more appropriately."
+            }
+        ],
+        "As a rule of thumb, if you feel the need to comment on something inside a method, you should take those code and put it in a new method.": [
+            {
+                "code": "Error handling in async with self._http_session.post(url=url, headers=request_headers) as response:",
+                "status": "Violated",
+                "suggestion": "Extract error handling into a separate method to improve readability and reusability."
+            }
+        ],
+        "Avoid calling any complex methods from __init__()": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "Avoid direct use of magic methods like __aenter__() & __aexit__()": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "Don't create a method logic dependent on arguments, if so, create a separate method for the same.": [
+            {
+                "code": "async def get(self, is_cache=True):",
+                "status": "Violated",
+                "suggestion": "The method mixes fetching from cache and fetching a new token. Consider splitting into two methods."
+            }
+        ],
+        "Don't include `and` / `or` in the method name. The method should contain a single logic inside it.": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "Don't mix low level operations with high level ones. If possible try to create a separate class": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "Don’t mix refactoring and direct development of new features. Try to separate these processes at least within the confines of individual commits.": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "Keep method return value independent of parameter": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "Move stuff out of loop that does not seem to change": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "Name of the method should explain what the function does/returns, not what it will be used for.": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "Never perform duplication in code. Make it DRY. (Don't repeat yourself)": [
+            {
+                "code": "async def get(self, is_cache=True): and async def _fetch_token(self):",
+                "status": "Violated",
+                "suggestion": "Consider abstracting the token fetching logic to avoid repetition in checking and setting cache."
+            }
+        ],
+        "Re-throw instead of throwing exception again.": [
+            {
+                "code": "except Exception as exception:",
+                "status": "Violated",
+                "suggestion": "Re-throw the original exception instead of throwing a new one to preserve the original stack trace."
+            }
+        ],
+        "Try to use explicit conditions in place of implicit ones.": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "don't sys.exit in your code. raise an error": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "gerund/participle verb form should not be used for naming any methods. Should be renamed to something that better represents what the method does.": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "in general putting logic of file access in the constructor is fragile.": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "make all shared objects pure and stateless.": [
+            {
+                "code": null,
+                "status": "Not Violated",
+                "suggestion": null
+            }
+        ],
+        "method named starting with get_ are considered as pure They should not modify the response before returning": [
+            {
+                "code": "async def get(self, is_cache=True):",
+                "status": "Violated",
+                "suggestion": "This getter method modifies the cache state, which should be avoided."
+            }
+        ]
+    }
+}
