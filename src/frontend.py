@@ -61,7 +61,7 @@ if st.button("Analyze") and not button_clicked:
                         code = best_practice["code"].replace("\n", " <br>")
                         suggestion = best_practice["suggestion"].replace("\n", " <br>")
 
-                        violation_text += f"""
+                        violation_text += """
                             <style>
                                 .violations-component {{
                                     background-color: #ffffff;
@@ -74,14 +74,14 @@ if st.button("Analyze") and not button_clicked:
                             </style>
                             <div class="violations-component">
                                 <p style="font-weight: bold;">Code:</p>
-                                <p style="background-color: #f0eee9;padding: 10px;border-radius: 5px;">{code}</p>
+                                <p style="background-color: #f0eee9;padding: 10px;border-radius: 5px;">{}</p>
                                 <br>
-                                <p style="font-weight: bold;">Suggestion:</p> {suggestion}
+                                <p style="font-weight: bold;">Suggestion:</p> {}
                             </div>
-                """
+                        """.format(code, suggestion)
 
                     st.markdown(
-                        f"""
+                        """
                             <style>
                                 .best-practice-component {{
                                     background-color: #f2f2f2;
@@ -91,16 +91,19 @@ if st.button("Analyze") and not button_clicked:
                                 }}
                             </style>
                             <div class="best-practice-component">
-                            <p style="font-weight: bold;">Best practice:</p>{best_practice_name.replace("\n"," <br>")}
+                                <p style="font-weight: bold;">Best practice:</p> {}
                             </div>
-                """,
+                        """.format(best_practice_name.replace("\n", " <br>")),
                         unsafe_allow_html=True,
                     )
 
-                    st.markdown("<p style='font-size: 20;font-weight: bold;color: #db1304;'>Violations: </p>",unsafe_allow_html=True)
+                    st.markdown(
+                        "<p style='font-size: 20;font-weight: bold;color: #db1304;'>Violations: </p>",
+                        unsafe_allow_html=True
+                    )
 
                     st.markdown(
-                        f"""
+                        """
                             <style>
                                 .data-component {{
                                     background-color: #ffffff;
@@ -110,8 +113,8 @@ if st.button("Analyze") and not button_clicked:
                                 }}
                             </style>
                             <div class="data-component">
-                                {violation_text}
+                                {}
                             </div>
-                """,
+                        """.format(violation_text),
                         unsafe_allow_html=True,
                     )
