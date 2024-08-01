@@ -81,7 +81,7 @@ if st.button("Analyze") and not button_clicked:
                 """
 
                     st.markdown(
-                        f'''
+                        f"""
                             <style>
                                 .best-practice-component {{
                                     background-color: #f2f2f2;
@@ -93,7 +93,7 @@ if st.button("Analyze") and not button_clicked:
                             <div class="best-practice-component">
                             <p style="font-weight: bold;">Best practice:</p>{best_practice_name.replace("\n"," <br>")}
                             </div>
-                ''',
+                """,
                         unsafe_allow_html=True,
                     )
 
