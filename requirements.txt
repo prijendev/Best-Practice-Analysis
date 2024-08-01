@@ -1,0 +1,13 @@
+streamlit
+langchain
+langchain-community
+langchain-core
+langchain-openai
+openai
+python-dotenv
+fuzzywuzzy
+beautifulsoup4
+bs4
+atlassian-python-api
+SQLAlchemy
+tiktoken
