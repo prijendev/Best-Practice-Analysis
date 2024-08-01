@@ -25,6 +25,7 @@ class CodeLoader:
         self.username = username
         self.password = password
         self.is_clone = False
+        self.project_structure = ""
 
     def load_code_files(self):
         try:
@@ -89,7 +90,7 @@ class CodeLoader:
         return project_structure
 
     def get_project_framework(self):
-        project_structure = self.create_project_structure(self.code_link)
+        self.project_structure = self.create_project_structure(self.code_link)
 
         model = ChatOpenAI(
             model=MODEL_NAME,
@@ -102,7 +103,7 @@ class CodeLoader:
         )
 
         chain = prompt_template | model
-        return chain.invoke({"project_structure": project_structure}).content
+        return chain.invoke({"project_structure": self.project_structure}).content
 
     def on_rm_error(self, func, path, exc_info):
         os.chmod(path, stat.S_IWRITE)

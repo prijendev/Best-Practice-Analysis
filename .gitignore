@@ -1,3 +1,7 @@
 .env
 /logs
 /db
+/env
+/src/_pycache_
+/src/__pycache__/*
+/src/utils/__pycache__/*

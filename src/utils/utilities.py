@@ -250,3 +250,10 @@ def store_json_output(directory_path, analysis_response):
         print(
             f"An error occurred while writing to the JSON file for report generation: {e}"
         )
+
+def filter_best_practices(processed_best_practice_dict_list, filter_key, filter_value):
+    filter_best_practices = []
+    for key, best_practice_deta in processed_best_practice_dict_list.items():
+        if best_practice_deta.get(filter_key) == filter_value:
+            filter_best_practices.append({key: best_practice_deta})
+    return filter_best_practices
