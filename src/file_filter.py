@@ -26,7 +26,7 @@ class FileFilter:
                         >= SIMILARITY_SEARCH_THRESHOLD
                     ):
                         self.filtered_files[path].append(
-                            f"{practice["statement"]}\n[keyword_name: {key}]"
+                            f'{practice["statement"]}\n[keyword_name: {key}]'
                         )
                         break
 
