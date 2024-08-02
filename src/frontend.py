@@ -32,7 +32,7 @@ with st.container():
 code_link = st.text_input("Source code link")
 best_practice_link = st.text_input("Best practices link")
 username = st.text_input("Confluence username")
-password = st.text_input("Confluence password")
+password = st.text_input("Confluence password",type="password")
 
 button_clicked = st.session_state.get("button_clicked", False)
 
