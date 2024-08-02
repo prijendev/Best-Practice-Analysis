@@ -43,7 +43,8 @@ class RepoLevelAnalyzer:
             )
             final_response = self.format_output(result.content)
         except ValueError as e:
-            raise ValueError(f"Analysis failed due to an unexpected error: {str(e)}")
+            return {}
+            # raise ValueError(f"Analysis failed due to an unexpected error: {str(e)}")
         except Exception as e:
             self.logger.error(f"Analysis failed due to an unexpected error: {e}")
         self.logger.info("Repo Level Analysis completed.")

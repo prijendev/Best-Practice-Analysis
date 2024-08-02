@@ -25,7 +25,7 @@ MAX_CHUNKS_PROCESS_CONCURRENTLY = 3
 FILE_THREAD_PREFIX = "file_analysis_thread"
 CHUNK_THREAD_PREFIX = "chunk_analysis_thread"
 STATEMENT_KEYWORD_PATTERN = r"(.+)\[keyword_name: (.+)\]"
-CODE_LINES_CHUNK_SIZE = 500
+CODE_LINES_CHUNK_SIZE = 10
 
 DOCUMENTATION_CHUNK_TOKEN_LIMIT = 50
 DOCUMENTATION_CHUNK_OVERLAP = 0
@@ -48,7 +48,7 @@ TIMELY_LOGGER_INTERVAL = (
 LOG_FILE_TIME_FORMAT = "%d-%m-%Y"
 
 
-SIMILARITY_SEARCH_THRESHOLD = 65
+SIMILARITY_SEARCH_THRESHOLD = 10
 
 IGNORE_CHARS = ["'", '"', " ", "`", "\n"]
 
@@ -61,12 +61,8 @@ Check for all best practices one by one.
 You have to first analyze structure and then evaluate best practice.
 Check whether given best practice violated or not based on given project structure.
 Your response must be in following  format:
-{{
-    best_practice_keyword: ["Violated/Not Violated","suggested solution"],
-    best_practice_keyword: ["Violated/Not Violated","suggested solution"],
-    best_practice_keyword: ["Violated/Not Violated","suggested solution"],
-    ...
-}}
+[["Not Violated"], ["Violated","Suggestion to follow the best practice"], ["Not
+Violated"]] for each best practice in same order.
 Your response must not contain any other text.
 In response only json is there no other text.
 """
@@ -161,10 +157,11 @@ You are an expert in code analysis and best practices understanding. Your task i
 
 Give me answer based on current code and file only.\n
 Forget all the past answers and conversations.\n
+Response should not exceed more the 10 line and should be in valid JSON format.\n
 Respond strictly in JSON format without any additional description or any markdown formatting. For each best practice, use the following structure: \n
 best_practice_keyword in response is same as best practices dict provided keyword. \n
 
-[[{{
+{{
 best_practice_1_keyword:[
    ["Violated","code line where this best practice is violated",
    "Suggestion to follow this best practice"],
@@ -179,7 +176,7 @@ best_practice_2_keyword:[
 best_practice_3_keyword:[
    ["Not Relevant"]
 ]
-}}]]
+}}
 
 Context:
 - Frameworks: {project_frameworks}\n

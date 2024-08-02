@@ -34,8 +34,8 @@ class PracticeLoader:
             if frameworks
             else ""
         )
-        self.auth_user = username or os.getenv("username")
-        self.auth_pass = password or os.getenv("password")
+        self.auth_user = username 
+        self.auth_pass = password
 
     def fetch_practices(self):
         if os.path.isfile(self.practice_link):

@@ -27,10 +27,12 @@ with st.container():
         "https://miro.medium.com/v2/resize:fit:750/format:webp/1*AvcSX3HOMujgic1RCA6lLQ.png",
         width=150,
     )
-    st.title("Best Practices Analyzer")
+    st.title("CodeSensei")
 
 code_link = st.text_input("Source code link")
 best_practice_link = st.text_input("Best practices link")
+username = st.text_input("Confluence username")
+password = st.text_input("Confluence password")
 
 button_clicked = st.session_state.get("button_clicked", False)
 
@@ -40,7 +42,7 @@ if st.button("Analyze") and not button_clicked:
     else:
         st.session_state["button_clicked"] = True
         with st.spinner("Analyzing..."):
-            data = run(code_link,best_practice_link )
+            data = run(code_link,best_practice_link,username,password )
             filtered_data = filter_json(data)
             time.sleep(2)
         st.success("Analysis completed! ✅")

@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def run(repo_link, best_practices_doc_link):
+def run(repo_link, best_practices_doc_link,username,password):
     try:
         code_loader = CodeLoader(
             code_link=repo_link,
@@ -26,7 +26,7 @@ def run(repo_link, best_practices_doc_link):
         code_files = code_loader.load_code_files()
         project_frameworks = code_loader.get_project_framework()
         practice_loader = PracticeLoader(
-            best_practices_doc_link, project_frameworks, os.getenv("username"), os.getenv("password")
+            best_practices_doc_link, project_frameworks, username, password
         )
 
         practice_dict_list = practice_loader.process_best_practices()
@@ -69,7 +69,8 @@ def run(repo_link, best_practices_doc_link):
     ) as error:
         raise error
     finally:
+        # Cleanup
         code_loader.delete_folder()
 
 if __name__ == "__main__":
-    run("github link", "best practice doc link")
+    run("github link", "best practice doc link", "username", "password")

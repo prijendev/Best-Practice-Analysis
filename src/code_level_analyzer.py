@@ -122,6 +122,7 @@ class CodeAnalyzer:
 
     def execute_file_analyze(self):
         old_responses = {}
+        final_response={}
         try:
             with ContextThreadPoolExecutor(
                 max_workers=MAX_FILES_PROCESS_CONCURRENTLY,
